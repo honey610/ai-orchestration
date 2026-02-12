@@ -10,14 +10,18 @@ dotenv.config(); // Load environment variables
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin:"*"
+}));
 
 app.use("/api/generate",generateRoute);
 app.use("/api/rollback", rollBackRoute);
 app.use("/api/history", historyRoute);
 
 
-
+app.get("/", (req, res) => {
+  res.send("Server is running!");
+});
 app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
