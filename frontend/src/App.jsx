@@ -12,12 +12,14 @@ function App() {
   const [explanation, setExplanation] = useState("");
   const [versionId, setVersionId] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const [versions, setVersions] = useState([]);
   const handleNewSession = () => {
   setPlan(null);
   setCode("");
   setExplanation("");
   setVersionId(null);
+  
+
 };
 
   return (
@@ -34,12 +36,15 @@ function App() {
         existingPlan={plan}
         explanation={explanation}
         handleNewSession={handleNewSession}
+        setVersions={setVersions}
       />
       <HistoryPanel
         setPlan={setPlan}
         setCode={setCode}
         setExplanation={setExplanation}
         setVersionId={setVersionId}
+       versions={versions}
+        setVersions={setVersions}
       />
 
       <CodePanel code={code} />

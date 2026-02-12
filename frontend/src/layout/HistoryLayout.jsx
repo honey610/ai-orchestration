@@ -3,12 +3,15 @@ import axios from "axios";
 import { reusablepanel } from "../reusable/reusable.js";
 
 export default function HistoryPanel({
+  versions,
   setPlan,
   setCode,
   setExplanation,
-  setVersionId
+  setVersionId,
+  setVersions
+  
 }) {
-  const [versions, setVersions] = useState([]);
+ 
 
   const fetchHistory = async () => {
     const res = await axios.get("http://localhost:5000/api/history");
@@ -17,7 +20,7 @@ export default function HistoryPanel({
 
   useEffect(() => {
     fetchHistory();
-  }, [setPlan]); // refetch when plan changes to get latest history
+  }, []); // refetch when versions changes to get latest history
 
   const handleRollback = async (id) => {
     const res = await axios.post(

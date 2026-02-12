@@ -9,6 +9,7 @@ export default function ChatPanel({
   setCode,
   setExplanation,
   setVersionId,
+  setVersions,
   existingPlan,
   explanation,
   handleNewSession
@@ -16,6 +17,9 @@ export default function ChatPanel({
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+ 
+  
+
 
   const handleGenerate = async () => {
     if (!input.trim()) return;
@@ -36,6 +40,10 @@ export default function ChatPanel({
       setCode(res.data.code);
       setExplanation(res.data.explanation);
       setVersionId(res.data.versionId);
+     setVersions(prev => [
+  { id: res.data.versionId, timestamp: Date.now() },
+  ...(prev || [])
+]);
     } catch (err) {
       console.error(err);
       setError("Failed to generate UI. Please try again.");
