@@ -29,7 +29,7 @@ export default function ChatPanel({
       setError(null);
 
       const res = await axios.post(
-        "http://localhost:5000/api/generate",
+        "https://ai-orchestration-utwv.onrender.com/api/generate",
         {
           userIntent: input,
           existingPlan: existingPlan || {}

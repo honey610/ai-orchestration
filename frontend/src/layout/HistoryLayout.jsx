@@ -14,7 +14,7 @@ export default function HistoryPanel({
  
 
   const fetchHistory = async () => {
-    const res = await axios.get("http://localhost:5000/api/history");
+    const res = await axios.get("https://ai-orchestration-utwv.onrender.com/api/history");
     setVersions(res.data.reverse()); // latest first
   };
 
@@ -24,7 +24,7 @@ export default function HistoryPanel({
 
   const handleRollback = async (id) => {
     const res = await axios.post(
-      "http://localhost:5000/api/rollback",
+      "https://ai-orchestration-utwv.onrender.com/api/rollback",
       { versionId: id }
     );
 
